@@ -92,6 +92,7 @@ namespace FirstApp {
 
 
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Button^ btn_nex;
 
 
 
@@ -158,6 +159,7 @@ namespace FirstApp {
 			this->btn_log = (gcnew System::Windows::Forms::Button());
 			this->btn_sqr = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->btn_nex = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button_exit
@@ -181,7 +183,7 @@ namespace FirstApp {
 			this->result_label->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->result_label->ForeColor = System::Drawing::Color::White;
-			this->result_label->Location = System::Drawing::Point(10, 22);
+			this->result_label->Location = System::Drawing::Point(10, 37);
 			this->result_label->Name = L"result_label";
 			this->result_label->Size = System::Drawing::Size(278, 64);
 			this->result_label->TabIndex = 1;
@@ -589,6 +591,23 @@ namespace FirstApp {
 			this->label1->Text = L"Engineering";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
+			// btn_nex
+			// 
+			this->btn_nex->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btn_nex->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_nex->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->btn_nex->ImageAlign = System::Drawing::ContentAlignment::TopCenter;
+			this->btn_nex->Location = System::Drawing::Point(40, 11);
+			this->btn_nex->Name = L"btn_nex";
+			this->btn_nex->Size = System::Drawing::Size(23, 23);
+			this->btn_nex->TabIndex = 43;
+			this->btn_nex->Text = L"---";
+			this->btn_nex->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			this->btn_nex->UseVisualStyleBackColor = false;
+			this->btn_nex->Click += gcnew System::EventHandler(this, &MyForm::btn_nex_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -597,6 +616,7 @@ namespace FirstApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
 			this->ClientSize = System::Drawing::Size(346, 459);
 			this->ControlBox = false;
+			this->Controls->Add(this->btn_nex);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btn_sqr);
 			this->Controls->Add(this->btn_log);
@@ -628,7 +648,7 @@ namespace FirstApp {
 			this->Controls->Add(this->button_exit);
 			this->Controls->Add(this->result_label);
 			this->ForeColor = System::Drawing::Color::White;
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -793,6 +813,9 @@ namespace FirstApp {
 	}
 	private: System::Void btn_left_Click(System::Object^ sender, System::EventArgs^ e) {
 		math_action(')');
+	}
+	private: System::Void btn_nex_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->WindowState = FormWindowState::Minimized;
 	}
 };
 }
