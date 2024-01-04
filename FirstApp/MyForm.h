@@ -1,4 +1,5 @@
 #pragma once
+#include <math.h>
 
 namespace FirstApp {
 
@@ -71,6 +72,29 @@ namespace FirstApp {
 	private: double first_num;
 	private: char user_action = ' ';
 	private: bool is_equal = false;
+	private: System::Windows::Forms::Button^ btn_ing;
+	private: System::Windows::Forms::Button^ btn_sqrt;
+	private: System::Windows::Forms::Button^ btn_sin;
+	private: System::Windows::Forms::Button^ btn_cos;
+	private: System::Windows::Forms::Button^ btn_tan;
+	private: System::Windows::Forms::Button^ btn_ln;
+	private: System::Windows::Forms::Button^ btn_log;
+	private: System::Windows::Forms::Button^ btn_sqr;
+
+
+
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::Label^ label1;
+
+
+
 	protected:
 
 	protected:
@@ -125,6 +149,15 @@ namespace FirstApp {
 			this->btn_equal = (gcnew System::Windows::Forms::Button());
 			this->button20 = (gcnew System::Windows::Forms::Button());
 			this->btn_dot = (gcnew System::Windows::Forms::Button());
+			this->btn_ing = (gcnew System::Windows::Forms::Button());
+			this->btn_sqrt = (gcnew System::Windows::Forms::Button());
+			this->btn_sin = (gcnew System::Windows::Forms::Button());
+			this->btn_cos = (gcnew System::Windows::Forms::Button());
+			this->btn_tan = (gcnew System::Windows::Forms::Button());
+			this->btn_ln = (gcnew System::Windows::Forms::Button());
+			this->btn_log = (gcnew System::Windows::Forms::Button());
+			this->btn_sqr = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button_exit
@@ -431,14 +464,148 @@ namespace FirstApp {
 			this->btn_dot->UseVisualStyleBackColor = false;
 			this->btn_dot->Click += gcnew System::EventHandler(this, &MyForm::btn_dot_Click);
 			// 
+			// btn_ing
+			// 
+			this->btn_ing->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
+				static_cast<System::Int32>(static_cast<System::Byte>(69)));
+			this->btn_ing->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_ing->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->btn_ing->Location = System::Drawing::Point(303, 240);
+			this->btn_ing->Name = L"btn_ing";
+			this->btn_ing->Size = System::Drawing::Size(33, 78);
+			this->btn_ing->TabIndex = 32;
+			this->btn_ing->Text = L">";
+			this->btn_ing->UseVisualStyleBackColor = false;
+			this->btn_ing->Click += gcnew System::EventHandler(this, &MyForm::btn_ing_Click);
+			// 
+			// btn_sqrt
+			// 
+			this->btn_sqrt->BackColor = System::Drawing::Color::Gray;
+			this->btn_sqrt->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_sqrt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->btn_sqrt->Location = System::Drawing::Point(352, 177);
+			this->btn_sqrt->Name = L"btn_sqrt";
+			this->btn_sqrt->Size = System::Drawing::Size(65, 55);
+			this->btn_sqrt->TabIndex = 33;
+			this->btn_sqrt->Text = L"sqrt";
+			this->btn_sqrt->UseVisualStyleBackColor = false;
+			this->btn_sqrt->Click += gcnew System::EventHandler(this, &MyForm::btn_sqrt_Click);
+			// 
+			// btn_sin
+			// 
+			this->btn_sin->BackColor = System::Drawing::Color::Gray;
+			this->btn_sin->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_sin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->btn_sin->Location = System::Drawing::Point(423, 177);
+			this->btn_sin->Name = L"btn_sin";
+			this->btn_sin->Size = System::Drawing::Size(65, 55);
+			this->btn_sin->TabIndex = 34;
+			this->btn_sin->Text = L"sin";
+			this->btn_sin->UseVisualStyleBackColor = false;
+			this->btn_sin->Click += gcnew System::EventHandler(this, &MyForm::btn_sin_Click);
+			// 
+			// btn_cos
+			// 
+			this->btn_cos->BackColor = System::Drawing::Color::Gray;
+			this->btn_cos->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_cos->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->btn_cos->Location = System::Drawing::Point(494, 177);
+			this->btn_cos->Name = L"btn_cos";
+			this->btn_cos->Size = System::Drawing::Size(65, 55);
+			this->btn_cos->TabIndex = 35;
+			this->btn_cos->Text = L"cos";
+			this->btn_cos->UseVisualStyleBackColor = false;
+			this->btn_cos->Click += gcnew System::EventHandler(this, &MyForm::btn_cos_Click);
+			// 
+			// btn_tan
+			// 
+			this->btn_tan->BackColor = System::Drawing::Color::Gray;
+			this->btn_tan->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_tan->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->btn_tan->Location = System::Drawing::Point(352, 250);
+			this->btn_tan->Name = L"btn_tan";
+			this->btn_tan->Size = System::Drawing::Size(65, 55);
+			this->btn_tan->TabIndex = 36;
+			this->btn_tan->Text = L"tan";
+			this->btn_tan->UseVisualStyleBackColor = false;
+			this->btn_tan->Click += gcnew System::EventHandler(this, &MyForm::btn_tan_Click);
+			// 
+			// btn_ln
+			// 
+			this->btn_ln->BackColor = System::Drawing::Color::Gray;
+			this->btn_ln->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_ln->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->btn_ln->Location = System::Drawing::Point(423, 250);
+			this->btn_ln->Name = L"btn_ln";
+			this->btn_ln->Size = System::Drawing::Size(65, 55);
+			this->btn_ln->TabIndex = 37;
+			this->btn_ln->Text = L"ln";
+			this->btn_ln->UseVisualStyleBackColor = false;
+			this->btn_ln->Click += gcnew System::EventHandler(this, &MyForm::btn_ln_Click);
+			// 
+			// btn_log
+			// 
+			this->btn_log->BackColor = System::Drawing::Color::Gray;
+			this->btn_log->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_log->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->btn_log->Location = System::Drawing::Point(494, 250);
+			this->btn_log->Name = L"btn_log";
+			this->btn_log->Size = System::Drawing::Size(65, 55);
+			this->btn_log->TabIndex = 38;
+			this->btn_log->Text = L"log";
+			this->btn_log->UseVisualStyleBackColor = false;
+			this->btn_log->Click += gcnew System::EventHandler(this, &MyForm::btn_log_Click);
+			// 
+			// btn_sqr
+			// 
+			this->btn_sqr->BackColor = System::Drawing::Color::Gray;
+			this->btn_sqr->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btn_sqr->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->btn_sqr->Location = System::Drawing::Point(423, 322);
+			this->btn_sqr->Name = L"btn_sqr";
+			this->btn_sqr->Size = System::Drawing::Size(65, 55);
+			this->btn_sqr->TabIndex = 39;
+			this->btn_sqr->Text = L"^";
+			this->btn_sqr->UseVisualStyleBackColor = false;
+			this->btn_sqr->Click += gcnew System::EventHandler(this, &MyForm::btn_sqr_Click);
+			// 
+			// label1
+			// 
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->ForeColor = System::Drawing::Color::Black;
+			this->label1->Location = System::Drawing::Point(352, 393);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(207, 55);
+			this->label1->TabIndex = 42;
+			this->label1->Text = L"Engineering";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(69)), static_cast<System::Int32>(static_cast<System::Byte>(69)),
 				static_cast<System::Int32>(static_cast<System::Byte>(69)));
-			this->ClientSize = System::Drawing::Size(299, 460);
+			this->ClientSize = System::Drawing::Size(346, 459);
 			this->ControlBox = false;
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->btn_sqr);
+			this->Controls->Add(this->btn_log);
+			this->Controls->Add(this->btn_ln);
+			this->Controls->Add(this->btn_tan);
+			this->Controls->Add(this->btn_cos);
+			this->Controls->Add(this->btn_sin);
+			this->Controls->Add(this->btn_sqrt);
+			this->Controls->Add(this->btn_ing);
 			this->Controls->Add(this->btn_dot);
 			this->Controls->Add(this->btn_equal);
 			this->Controls->Add(this->button20);
@@ -478,6 +645,7 @@ namespace FirstApp {
 	private: System::Void BtnNumber_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->result_label->ForeColor = Color::White;
 		Button^ button = safe_cast<Button^>(sender);
+		
 
 		if (this->result_label->Text == "0" || is_equal) {
 			this->result_label->Text = button->Text;
@@ -513,22 +681,50 @@ namespace FirstApp {
 		if (user_action == ' ') {
 			return;
 		}
-		double second = System::Convert::ToDouble(this->result_label->Text);
 		double res;
-		switch (this->user_action) {
-		case '+': res = this->first_num + second; break;
-		case '-': res = this->first_num - second; break;
-		case '*': res = this->first_num * second; break;
-		case '/':
-			if (second == 0) {
-				res = 0;
-				this->result_label->ForeColor = Color::Red;
-				MessageBox::Show(this, "The action is prohibited", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (this->user_action == 's')
+		{
+			res = sqrt(first_num);
+		}
+		else if (this->user_action == 'i')
+		{
+			res = sin(first_num);
+		}
+		else if (this->user_action == 'c')
+		{
+			res = cos(first_num);
+		}
+		else if (this->user_action == 't')
+		{
+			res = tan(first_num);
+		}
+		else if (this->user_action == 'n')
+		{
+			res = log(first_num);
+		}
+		else if (this->user_action == 'l')
+		{
+			res = log10(first_num);
+		}
+		else
+		{
+			double second = System::Convert::ToDouble(this->result_label->Text);
+			switch (this->user_action) {
+			case '+': res = this->first_num + second; break;
+			case '-': res = this->first_num - second; break;
+			case '*': res = this->first_num * second; break;
+			case '/':
+				if (second == 0) {
+					res = 0;
+					this->result_label->ForeColor = Color::Red;
+					MessageBox::Show(this, "The action is prohibited", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
+				else {
+					res = this->first_num / second; break;
+				}
+			case '%': res = this->first_num * second / 100; break;
+			case '^': res = pow(first_num, second);
 			}
-			else {
-				res = this->first_num / second; break;
-			}
-		case '%': res = this->first_num * second / 100; break;
 		}
 		this->is_equal = true;
 		this->result_label->Text = System::Convert::ToString(res);
@@ -541,7 +737,7 @@ namespace FirstApp {
 		this->is_equal = false;
 	}
 	private: System::Void btn_minus_plus_Click(System::Object^ sender, System::EventArgs^ e) {
-		int num = System::Convert::ToDouble(this->result_label->Text);
+		double num = System::Convert::ToDouble(this->result_label->Text);
 		num *= -1;
 		this->result_label->Text = System::Convert::ToString(num);
 	}
@@ -550,6 +746,53 @@ namespace FirstApp {
 		if (!text->Contains(",")) {
 			this->result_label->Text = text + ",";
 		}
+	}
+	private: System::Void btn_ing_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->btn_ing->Text == "<")
+		{
+			this->btn_ing->Location = System::Drawing::Point(301, 240);
+			this->btn_ing->Text = ">";
+			this->btn_ing->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->ClientSize = System::Drawing::Size(346, 459);
+			this->result_label->Size = System::Drawing::Size(278, 64);
+		}
+		else
+		{
+			this->ClientSize = System::Drawing::Size(610, 459);
+			this->btn_ing->Location = System::Drawing::Point(568, 240);
+			this->btn_ing->Text = "<";
+			this->btn_ing->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->result_label->Size = System::Drawing::Size(542, 64);
+		}
+	}
+	private: System::Void btn_sqrt_Click(System::Object^ sender, System::EventArgs^ e) {
+		math_action('s');
+	}
+	private: System::Void btn_sin_Click(System::Object^ sender, System::EventArgs^ e) {
+		math_action('i');
+	}
+	private: System::Void btn_cos_Click(System::Object^ sender, System::EventArgs^ e) {
+		math_action('c');
+	}
+	private: System::Void btn_tan_Click(System::Object^ sender, System::EventArgs^ e) {
+		math_action('t');
+	}
+	private: System::Void btn_ln_Click(System::Object^ sender, System::EventArgs^ e) {
+		math_action('n');
+	}
+	private: System::Void btn_log_Click(System::Object^ sender, System::EventArgs^ e) {
+		math_action('l');
+	}
+	private: System::Void btn_sqr_Click(System::Object^ sender, System::EventArgs^ e) {
+		math_action('^');
+	}
+	private: System::Void btn_right_Click(System::Object^ sender, System::EventArgs^ e) {
+		math_action('(');
+	}
+	private: System::Void btn_left_Click(System::Object^ sender, System::EventArgs^ e) {
+		math_action(')');
 	}
 };
 }
