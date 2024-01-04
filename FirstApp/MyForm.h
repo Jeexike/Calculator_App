@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+#include <Windows.h>
 
 namespace FirstApp {
 
@@ -69,9 +70,6 @@ namespace FirstApp {
 	private: System::Windows::Forms::Button^ button20;
 	private: System::Windows::Forms::Button^ btn_dot;
 
-	private: double first_num;
-	private: char user_action = ' ';
-	private: bool is_equal = false;
 	private: System::Windows::Forms::Button^ btn_ing;
 	private: System::Windows::Forms::Button^ btn_sqrt;
 	private: System::Windows::Forms::Button^ btn_sin;
@@ -80,6 +78,11 @@ namespace FirstApp {
 	private: System::Windows::Forms::Button^ btn_ln;
 	private: System::Windows::Forms::Button^ btn_log;
 	private: System::Windows::Forms::Button^ btn_sqr;
+
+	private: double first_num;
+	private: char user_action = ' ';
+	private: bool is_equal = false;
+	private: int targetWidth, targetHeigth;
 
 
 
@@ -768,23 +771,54 @@ namespace FirstApp {
 		}
 	}
 	private: System::Void btn_ing_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->btn_ing->Text == "<") {
+			targetWidth = 459;
+			targetHeigth = 346;
+		}
+		else {
+			targetWidth = 600;
+			targetHeigth = 346;
+		}
+
+		Timer^ timer = gcnew Timer();
+		timer->Interval = 10;
+
+		timer->Tick += gcnew EventHandler(this, &MyForm::OnTimerTick);
+		timer->Start();
+
+		this->targetHeigth = targetHeigth;
+		this->targetWidth = targetWidth;
+
 		if (this->btn_ing->Text == "<")
 		{
 			this->btn_ing->Location = System::Drawing::Point(301, 240);
 			this->btn_ing->Text = ">";
 			this->btn_ing->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->ClientSize = System::Drawing::Size(346, 459);
 			this->result_label->Size = System::Drawing::Size(278, 64);
 		}
 		else
 		{
-			this->ClientSize = System::Drawing::Size(610, 459);
 			this->btn_ing->Location = System::Drawing::Point(568, 240);
 			this->btn_ing->Text = "<";
 			this->btn_ing->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->result_label->Size = System::Drawing::Size(542, 64);
+		}
+	}
+	private: System::Void OnTimerTick(System::Object^ sender, System::EventArgs^ e) {
+		if (this->ClientSize.Width != this->targetWidth && this->targetWidth != 459) {
+			float stepWidth = (this->targetWidth - this->ClientSize.Width) / 5; // шаг изменения ширины
+			this->ClientSize = System::Drawing::Size(this->ClientSize.Width + stepWidth + 3, this->ClientSize.Height);
+		}
+		else if (this->ClientSize.Width != this->targetWidth && this->targetWidth == 459) {
+			int stepWidth = (this->ClientSize.Width - this->targetWidth) / 5; // шаг изменения ширины
+			this->ClientSize = System::Drawing::Size(this->ClientSize.Width - stepWidth - 23, this->ClientSize.Height);
+		}
+		else {
+			Timer^ timer = dynamic_cast<Timer^>(sender);
+			timer->Stop();
+			delete timer;
 		}
 	}
 	private: System::Void btn_sqrt_Click(System::Object^ sender, System::EventArgs^ e) {
